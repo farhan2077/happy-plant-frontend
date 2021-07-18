@@ -30,16 +30,20 @@ export default function Navbar() {
             </div>
             <div className="flex items-center justify-center flex-1 sm:justify-between">
               <div className="flex flex-shrink-0">
-                <img
-                  className="block w-auto h-12 lg:hidden"
-                  src={logoSmall}
-                  alt="Happy Plant"
-                />
-                <img
-                  className="hidden w-auto h-12 lg:block"
-                  src={logoBig}
-                  alt="Happy Plant"
-                />
+                <Link to="/">
+                  <img
+                    className="block w-auto h-12 lg:hidden"
+                    src={logoSmall}
+                    alt="Happy Plant"
+                  />
+                </Link>
+                <Link to="/">
+                  <img
+                    className="hidden w-auto h-12 lg:block"
+                    src={logoBig}
+                    alt="Happy Plant"
+                  />
+                </Link>
               </div>
               <div className="hidden -mr-2 sm:block">
                 <div className="flex space-x-5">
