@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <section className="grid h-full bg-red-50">
       <div className="m-auto text-center">
-        {plantData.success && plantData.data ? (
+        {plantData.success && plantData.data.length ? (
           <>
             {plantData.data[0].reading < 20 && plantData.data[0].reading > 1 ? (
               <div>
