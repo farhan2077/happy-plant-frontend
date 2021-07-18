@@ -15,7 +15,7 @@ export default function Home() {
   }, []);
 
   return (
-    <section className="grid h-full bg-red-50">
+    <section className="grid h-full">
       <div className="m-auto text-center">
         {plantData.success && plantData.data.length ? (
           <>
