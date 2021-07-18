@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+import MetaDecorator from "../components/MetaDecorator";
 import { agent } from "../helpers/agent";
 import happyPlant from "../assets/happy-plant.svg";
 import sadPlant from "../assets/sad-plant.svg";
@@ -16,6 +17,7 @@ export default function Home() {
 
   return (
     <section className="grid h-full">
+      <MetaDecorator title="Happy Plant" />
       <div className="m-auto text-center">
         {plantData.success && plantData.data.length ? (
           <>

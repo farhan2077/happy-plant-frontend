@@ -1,8 +1,9 @@
-import React from "react";
+import MetaDecorator from "../components/MetaDecorator";
 
 export default function How() {
   return (
     <div>
+      <MetaDecorator title="Happy Plant - How" />
       how
       <div>
         childLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

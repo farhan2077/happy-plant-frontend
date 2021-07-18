@@ -1,5 +1,10 @@
-import React from "react";
+import MetaDecorator from "../components/MetaDecorator";
 
 export default function About() {
-  return <div>about</div>;
+  return (
+    <div>
+      <MetaDecorator title="Happy Plant - About" />
+      about
+    </div>
+  );
 }
