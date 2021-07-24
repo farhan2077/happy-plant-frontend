@@ -15,7 +15,7 @@ export default function Navbar() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   return (
-    <nav className="p-2.5 flex items-start lg:items-center justify-between">
+    <nav className="py-2.5 flex items-start lg:items-center justify-between">
       {/* desktop start */}
       <div>
         <div className="hidden lg:block">
