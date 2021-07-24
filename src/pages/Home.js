@@ -2,20 +2,27 @@ import { useState, useEffect } from "react";
 
 import MetaDecorator from "../components/MetaDecorator";
 import { agent } from "../helpers/agent";
+
 import happyPlant from "../assets/happy-plant.svg";
 import sadPlant from "../assets/sad-plant.svg";
 
-let upperValue = 600;
+let upperValue = 600; // limit for values from moisture sensor
 let lowerValue = 300;
+let intervalValue = 60 * 30; // unit in second
 
 export default function Home() {
   const [plantData, setPlantData] = useState("");
 
   useEffect(() => {
-    agent
-      .getPlantLastReading()
-      .then((res) => res.json())
-      .then((data) => setPlantData(data));
+    let interval = setInterval(() => fetchPlantReading(), 1000 * intervalValue);
+    const fetchPlantReading = () => {
+      agent
+        .getPlantLastReading()
+        .then((res) => res.json())
+        .then((data) => setPlantData(data));
+    };
+    fetchPlantReading();
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -46,7 +53,7 @@ export default function Home() {
               </p>
             </div>
           ) : (
-            <div className="mx-10">
+            <div className="mx-10 text-xl">
               Can not display plant status 😢.
               <br />
               Check if everything is working or try again later.
