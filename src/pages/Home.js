@@ -20,12 +20,20 @@ export default function Home() {
         .then((res) => res.json())
         .then((data) => setPlantData(data));
     };
+    fetchPlantReading();
+  }, []);
+
+  useEffect(() => {
+    const fetchPlantReading = () => {
+      agent
+        .getPlantLastReading()
+        .then((res) => res.json())
+        .then((data) => setPlantData(data));
+    };
 
     let interval = setInterval(() => fetchPlantReading(), 1000 * intervalValue);
     return () => clearInterval(interval);
   }, []);
-
-  console.log(plantData);
 
   return (
     <>
