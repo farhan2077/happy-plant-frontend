@@ -34,6 +34,7 @@ export default function Navbar() {
           {navigation.map((nav) => {
             return (
               <Link
+                key={nav.name}
                 to={nav.href}
                 className="font-medium text-gray-500 hover:text-gray-900"
               >
@@ -64,6 +65,7 @@ export default function Navbar() {
               {navigation.map((nav) => {
                 return (
                   <Link
+                    key={nav.name}
                     onClick={() => setMobileNavOpen(false)}
                     to={nav.href}
                     className="font-medium text-gray-500 hover:text-gray-900"
