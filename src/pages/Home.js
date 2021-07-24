@@ -5,6 +5,9 @@ import { agent } from "../helpers/agent";
 import happyPlant from "../assets/happy-plant.svg";
 import sadPlant from "../assets/sad-plant.svg";
 
+let upperValue = 600;
+let lowerValue = 300;
+
 export default function Home() {
   const [plantData, setPlantData] = useState("");
 
@@ -20,20 +23,23 @@ export default function Home() {
       <MetaDecorator title="Happy Plant" />
       <div className="m-auto text-center">
         {plantData.success && plantData.data.length ? (
-          <>
-            {plantData.data[0].reading < 20 && plantData.data[0].reading > 1 ? (
-              <div>
-                <img src={happyPlant} alt="" className="w-full h-auto" />
-                Soil moisture is {plantData.data[0].reading}
-              </div>
-            ) : (
-              <div>
-                <img src={sadPlant} alt="" className="w-full h-auto" />
-                <br />
-                Soil moisture is {plantData.data[0].reading}
-              </div>
-            )}
-          </>
+          <div>
+            <div className="w-64 sm:w-80">
+              {plantData.data[0].reading < upperValue &&
+              plantData.data[0].reading > lowerValue ? (
+                <img
+                  src={happyPlant}
+                  alt="Happy plant"
+                  className="w-full h-auto -mt-32 sm:-mt-10"
+                />
+              ) : (
+                <img src={sadPlant} alt="Sad Plant" className="w-full h-auto" />
+              )}
+            </div>
+            <p className="mt-3 text-xl">
+              Soil moisture is {plantData.data[0].reading}
+            </p>
+          </div>
         ) : (
           <div className="mx-10">
             Can not display plant status 😢.

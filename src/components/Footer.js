@@ -17,8 +17,11 @@ export default function Footer() {
         />
       </svg>
       <span className="mr-1">by</span>
-      <Link to="/about" className="relative text-yellow-600">
-        <div className="absolute bottom-0 z-0 w-full h-2 border-t-2 border-yellow-400 opacity-40"></div>
+      <Link to="/about" className="relative text-green-700">
+        <div
+          aria-hidden="true"
+          className="absolute bottom-1.5 z-0 w-full h-1 bg-green-300 opacity-20"
+        ></div>
         <span className="z-20">some students of ECE-18</span>
       </Link>
     </section>

@@ -1,81 +1,84 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Disclosure } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 
 import logoBig from "../assets/logo-big.svg";
 import logoSmall from "../assets/logo-small.svg";
 
 const navigation = [
-  { name: "Home", href: "/", current: true },
-  { name: "How", href: "/how", current: false },
-  { name: "About", href: "/about", current: false },
+  { name: "Home", href: "/" },
+  { name: "How", href: "/how" },
+  { name: "About", href: "/about" },
 ];
 
 export default function Navbar() {
-  return (
-    <Disclosure as="nav">
-      {({ open }) => (
-        <>
-          <div className="relative flex items-center justify-between h-16">
-            <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-              {/* Mobile menu button*/}
-              <Disclosure.Button className="inline-flex items-center justify-center p-2 text-gray-500 rounded-md hover:text-gray-900 focus:outline-non">
-                <span className="sr-only">Open main menu</span>
-                {open ? (
-                  <XIcon className="block w-6 h-6" aria-hidden="true" />
-                ) : (
-                  <MenuIcon className="block w-6 h-6" aria-hidden="true" />
-                )}
-              </Disclosure.Button>
-            </div>
-            <div className="flex items-center justify-center flex-1 sm:justify-between">
-              <div className="flex flex-shrink-0">
-                <Link to="/">
-                  <img
-                    className="block w-auto h-12 lg:hidden"
-                    src={logoSmall}
-                    alt="Happy Plant"
-                  />
-                </Link>
-                <Link to="/">
-                  <img
-                    className="hidden w-auto h-12 lg:block"
-                    src={logoBig}
-                    alt="Happy Plant"
-                  />
-                </Link>
-              </div>
-              <div className="hidden -mr-2 sm:block">
-                <div className="flex space-x-5">
-                  {navigation.map((item) => (
-                    <Link
-                      key={item.name}
-                      to={item.href}
-                      className="px-3 py-2 font-medium text-gray-500 hover:text-gray-900 text-md"
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
-          <Disclosure.Panel className="sm:hidden ">
-            <div className="pt-2 pb-3 space-y-1">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className="flex flex-row px-3 py-2 font-medium text-gray-500 hover:text-gray-900 text-md"
-                >
-                  {item.name}
-                </Link>
-              ))}
+  return (
+    <nav className="p-2.5 flex items-start lg:items-center justify-between">
+      {/* desktop start */}
+      <div>
+        <div className="hidden lg:block">
+          <Link to="/">
+            <img className="w-auto h-12" src={logoBig} alt="Happy Plant" />
+          </Link>
+        </div>
+        <div className="block lg:hidden">
+          <Link to="/">
+            <img className="w-auto h-12" src={logoSmall} alt="Happy Plant" />
+          </Link>
+        </div>
+      </div>
+      <div className="flex flex-row items-end">
+        <div className="hidden space-x-10 lg:inline-flex">
+          {navigation.map((nav) => {
+            return (
+              <Link
+                to={nav.href}
+                className="font-medium text-gray-500 hover:text-gray-900"
+              >
+                {nav.name}
+              </Link>
+            );
+          })}
+        </div>
+        {/* desktop end */}
+
+        {/* mobile start */}
+        <div className="flex flex-col items-end lg:hidden">
+          {mobileNavOpen ? (
+            <XIcon
+              onClick={() => setMobileNavOpen(!mobileNavOpen)}
+              className="inline-block w-8 h-8 mt-3"
+              aria-hidden="true"
+            />
+          ) : (
+            <MenuIcon
+              onClick={() => setMobileNavOpen(!mobileNavOpen)}
+              className="inline-block w-8 h-8 mt-3"
+              aria-hidden="true"
+            />
+          )}
+          {mobileNavOpen ? (
+            <div className="z-10 inline-flex flex-col items-end mt-3 space-y-3 lg:hidden">
+              {navigation.map((nav) => {
+                return (
+                  <Link
+                    onClick={() => setMobileNavOpen(false)}
+                    to={nav.href}
+                    className="font-medium text-gray-500 hover:text-gray-900"
+                  >
+                    {nav.name}
+                  </Link>
+                );
+              })}
             </div>
-          </Disclosure.Panel>
-        </>
-      )}
-    </Disclosure>
+          ) : (
+            <></>
+          )}
+        </div>
+        {/* mobile end */}
+      </div>
+    </nav>
   );
 }
