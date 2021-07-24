@@ -14,16 +14,18 @@ export default function Home() {
   const [plantData, setPlantData] = useState("");
 
   useEffect(() => {
-    let interval = setInterval(() => fetchPlantReading(), 1000 * intervalValue);
     const fetchPlantReading = () => {
       agent
         .getPlantLastReading()
         .then((res) => res.json())
         .then((data) => setPlantData(data));
     };
-    fetchPlantReading();
+
+    let interval = setInterval(() => fetchPlantReading(), 1000 * intervalValue);
     return () => clearInterval(interval);
   }, []);
+
+  console.log(plantData);
 
   return (
     <>
