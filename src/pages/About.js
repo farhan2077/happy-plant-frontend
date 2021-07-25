@@ -16,8 +16,8 @@ export default function About() {
           shows if a plant is happy or sad.
         </p>
         <p>
-          Just kidding. We did this for project showcase for our 5th term's
-          subject "Microprocessor and Embedded Systems".
+          Just kidding. We did this as a project showcase for our 5th term's
+          course "Microprocessor and Embedded Systems".
         </p>
         <p>
           See <Link to="/how">how it works</Link>.
