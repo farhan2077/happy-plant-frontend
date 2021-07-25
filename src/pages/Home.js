@@ -6,7 +6,7 @@ import { agent } from "../helpers/agent";
 import happyPlant from "../assets/happy-plant.svg";
 import sadPlant from "../assets/sad-plant.svg";
 
-let upperValue = 350; // limit for values from moisture sensor
+let upperValue = 600; // limit for values from moisture sensor
 let lowerValue = 150;
 let intervalValue = 60 * 30; // unit in second
 
