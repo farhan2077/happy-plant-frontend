@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 import MetaDecorator from "../components/MetaDecorator";
 
 export default function About() {
@@ -18,13 +16,6 @@ export default function About() {
         <p className="my-6">
           Just kidding. We did this as a project showcase for our 5th term's
           course called "Microprocessor and Embedded Systems".
-        </p>
-        <p>
-          See{" "}
-          <Link className="font-medium underline text-orange" to="/how">
-            how it works
-          </Link>
-          .
         </p>
       </section>
     </>
