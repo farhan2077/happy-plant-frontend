@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-import MetaDecorator from "../components/MetaDecorator";
 import { agent } from "../helpers/agent";
 
 import happyPlant from "../assets/happy-plant.svg";
@@ -12,6 +11,10 @@ let intervalValue = 60 * 30; // unit in second
 
 export default function Home() {
   const [plantData, setPlantData] = useState("");
+
+  useEffect(() => {
+    document.title = `Happy Plant`;
+  });
 
   useEffect(() => {
     const fetchPlantReading = () => {
@@ -37,7 +40,7 @@ export default function Home() {
 
   return (
     <>
-      <MetaDecorator title="Happy Plant" />
+      {/* <MetaDecorator title="Happy Plant" /> */}
       <section className="grid h-full">
         <div className="m-auto text-center">
           {plantData.success && plantData.data.length ? (
